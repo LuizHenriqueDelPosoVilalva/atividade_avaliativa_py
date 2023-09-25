@@ -10,8 +10,10 @@ def menu_remedio (lista, cont):
         print("4 - Buscar remedios genericos -")
         print("5 - Buscar remedios não genericos -")
         print("6 - Atualizar campo atráves do nome - ")
-        print("7 - Remover remedio")
-        print("8 - calcular a media dos remedios em estoque")
+        print("7 - Remover remedio -")
+        print("8 - Calcular a media dos valores dos remedios -")
+        print("9 - Calcular a media dos remedios em estoque -")
+        print("10 - Buscar remedio com maior valor")
         print("0 - Sair -")
         
         opcao = int(input(">> ")) 
@@ -53,6 +55,15 @@ def menu_remedio (lista, cont):
                     remover_remedio(lista, posicao)
                 else:
                    print("Digite um remedio cadastrado")
+            case 8:
+                print("--Media dos valores do projeto--")
+                apresentar_media_valores(lista)
+            case 9:
+                print("--Media de remedios em estoque--")
+                apresentar_media_quantidade(lista)
+            case 10:
+                print("--Maior valor--")
+                maior_valor(lista)
             case 0:
                 break
             case  _:
@@ -126,7 +137,7 @@ def buscar_generico(lista):
         generico = i['generico']
         if generico == True:
             apresentacao = f"{nome_do_remedio} é genérico"
-        print(apresentacao)
+    print(apresentacao)
 
 def buscar_nao_generico(lista):
     print("-Lista de remedios não genericos-")
@@ -137,7 +148,8 @@ def buscar_nao_generico(lista):
         nome_do_remedio = i['nome']
         generico = i['generico']
         if generico == False:
-            print(f"{nome_do_remedio} não é generico")
+            resultado = f"{nome_do_remedio} não é generico"
+    print(resultado)
 
 def atualizar_campo(pos,lista):
     print("Menu de opções de atualização")
@@ -193,6 +205,37 @@ def atualizar_campo(pos,lista):
 def remover_remedio(lista, posicao):
     lista.pop(posicao)
     print("Remedio removido")
+
+def media (soma, tamanho):
+    media = soma/tamanho
+    return media
+
+def apresentar_media_valores (lista):
+     lista_valores = []
+     tamanho = len(lista)
+     for i in range(tamanho):
+         dado = lista[i]['valor']
+         lista_valores.append(dado)
+         soma = sum(lista_valores)
+         media_valores = media(soma, tamanho)
+         apresentar = f"A média dos valores dos remedios é de: {media_valores}"
+     print(apresentar)
+
+def apresentar_media_quantidade (lista):
+     lista_quantidade = []
+     tamanho = len(lista)
+     for i in range(tamanho):
+         dado = lista[i]['quantidade']
+         lista_quantidade.append(dado)
+         soma = sum(lista_quantidade)
+         media_quantidade = media(soma, tamanho)
+         apresentar = f"A média de quantidade de remedios em estoque é: {media_quantidade}"
+     print(apresentar)
+
+def maior_valor (lista):
+    tamanho = len(lista)
+    for i in range(0, lista):
+        for j in range()
 
 cont = 0
 lista = []
